@@ -2,12 +2,18 @@ class Solution {
 public:
     bool isPalindrome(int x) {
         string originalNumber = std::to_string(x);
-        string reverseNumber = "";
-        for(int i = originalNumber.size() - 1; i >= 0; i--)
+        int start = 0;
+        int end = originalNumber.size() - 1;
+        bool decision = true;
+        for(int i = 0; i < int(originalNumber.size() / 2); i++)
         {
-            reverseNumber += originalNumber[i];    
+            if(originalNumber[start] != originalNumber[end])
+            {
+                decision = false;
+            }
+            start++;
+            end--;
         }
-
-        return originalNumber == reverseNumber;
+        return decision;
     }
 };
