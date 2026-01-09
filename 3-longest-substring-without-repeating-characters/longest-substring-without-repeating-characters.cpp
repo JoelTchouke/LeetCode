@@ -1,7 +1,7 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_map <char, char> characters;
+        unordered_set <char> characters;
         int front = 0;
         int rear = 1;
         if(s.size() == 1)
@@ -13,7 +13,7 @@ public:
             return 0;
         }
 
-        characters[s[front]] = s[front];
+        characters.insert(s[front]);
 
         int longest = 1;
         while(rear < s.size())
@@ -24,7 +24,7 @@ public:
                 if (front == rear)
                 {
                     rear++;
-                    characters[s[rear]] = s[rear];
+                    characters.insert(s[rear]);
                 }
                 else
                 {
@@ -33,7 +33,7 @@ public:
             }
             else
             {
-                characters[s[rear]] = s[rear];
+                characters.insert(s[rear]);
                 rear++;
             }
             longest = characters.size() > longest ? characters.size() : longest;
