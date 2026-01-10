@@ -4,19 +4,16 @@ public:
         unordered_set <char> characters;
         int front = 0;
         int rear = 1;
-        if(s.size() == 1)
+        int stringSize = s.size();
+        if(stringSize == 1 || stringSize == 0)
         {
-            return 1;
-        }
-        if(s.size() == 0)
-        {
-            return 0;
+            return stringSize;
         }
 
         characters.insert(s[front]);
 
         int longest = 1;
-        while(rear < s.size())
+        while(rear < stringSize)
         {
             if(characters.find(s[rear]) != characters.end())
             {
