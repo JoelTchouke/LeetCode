@@ -20,14 +20,8 @@ public:
                 carry = 1;
                 steps += 2;
             }
-            else if(s[i] == '1' && carry == 1)
+            else 
             {
-                carry = 1;
-                steps++;
-            }
-            else
-            {
-                carry = 0;
                 steps++;
             }
         }
