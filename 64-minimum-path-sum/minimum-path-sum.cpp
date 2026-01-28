@@ -1,7 +1,8 @@
 using namespace std;
 class Solution {
 public:
-    unordered_map <long long, int> costs;
+    int m, n;
+    vector<int> memo;
     static long long key(int i, int j)
     {
         return ((long long) i << 32 | (unsigned int) j);
@@ -13,18 +14,19 @@ public:
         {
             return grid[0][0];
         }
-        long long k = key(i, j);
-        if(costs.find(k) != costs.end())
+        int index = i * n + j;
+        if(memo[index] != -1)
         {
-            return costs[k];
+            return memo[index];
         }
         int answer = grid[i][j] + min(minimumPathToReach(i - 1, j, grid), minimumPathToReach(i, j - 1, grid));
-        costs[k] = answer;
-        return answer;
+        
+        return memo[index] = answer;
     }
     int minPathSum(vector<vector<int>>& grid) {
-        int i = grid.size() - 1;
-        int j = grid[0].size() - 1;
-        return minimumPathToReach(i, j, grid);
+        m = grid.size();
+        n = grid[0].size();
+        memo.assign(m * n, -1);
+        return minimumPathToReach(m - 1, n - 1, grid);
     }
 };
