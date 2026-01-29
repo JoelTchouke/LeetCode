@@ -13,15 +13,14 @@ public:
 
     }
     int countComponents(int n, vector<vector<int>>& edges) {
+        int numberOfConnectedComp = 0;
         vector <vector<int>> graph (n);
         vector <bool> visitedNodes (n, false);
-        for (vector<int> node : edges)
+        for (const auto &node : edges)
         {
             graph[node[0]].push_back(node[1]);
             graph[node[1]].push_back(node[0]);
         }
-
-        int numberOfConnectedComp = 0;
 
         for(int i = 0; i < n; i++)
         {
