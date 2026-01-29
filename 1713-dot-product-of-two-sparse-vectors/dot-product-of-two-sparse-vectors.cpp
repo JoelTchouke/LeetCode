@@ -1,10 +1,7 @@
 class SparseVector {
 public:
     const vector<int> &sparseVector;
-    SparseVector(vector<int> &nums):sparseVector(nums) 
-    {
-
-    }
+    SparseVector(vector<int> &nums):sparseVector(nums) {}
     
     // Return the dotProduct of two sparse vectors
     int dotProduct(SparseVector& vec) {
