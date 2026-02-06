@@ -6,17 +6,14 @@
  * };
  */
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
-    struct ListNode* currentNode = headB;
-    while(headA != NULL)
-    {
-        while(currentNode != NULL)
-        {
-            if(currentNode == headA) return currentNode;
-            currentNode = currentNode -> next;            
-        }
-        currentNode = headB;
-        headA = headA->next;
-    }
+    if (!headA || !headB) return NULL;
 
-    return NULL;
+    struct ListNode *a = headA;
+    struct ListNode *b = headB;
+
+    while (a != b) {
+        a = (a != NULL) ? a->next : headB;
+        b = (b != NULL) ? b->next : headA;
+    }
+    return a; // either intersection node or NULL
 }
