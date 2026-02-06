@@ -8,7 +8,7 @@
 bool hasCycle(struct ListNode *head) {
     if(head == NULL) return false;
     struct ListNode* tortoise = head;
-    struct ListNode* hare = head -> next;
+    struct ListNode* hare = head;
     bool cycleFound = false;
     while(hare != NULL && hare -> next != NULL)
     {
