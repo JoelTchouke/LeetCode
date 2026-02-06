@@ -18,8 +18,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         carry = sum / 10;
 
         struct ListNode* node = malloc(sizeof(*node));
-        if(!node) return NULL;
-        
+                
         node -> val = sum % 10;
         node -> next = NULL;
 
