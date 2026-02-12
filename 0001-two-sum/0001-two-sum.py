@@ -5,16 +5,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        start = 0
-        end = start + 1
-        indexes = []
-        while start < len(nums) - 1:
-            if(end == len(nums)):
-                start += 1
-                end = start + 1
-            if nums[start] + nums[end] == target:
-                indexes = [start, end]
-                break
-            else:
-                end += 1
-        return indexes
+        seen = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in seen:
+                return [i, seen[complement]]
+            seen[num] = i
+        
+        return []
