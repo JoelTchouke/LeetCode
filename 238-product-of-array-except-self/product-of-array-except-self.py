@@ -5,6 +5,7 @@ class Solution(object):
         :rtype: List[int]
         """
         totalCount = 1
+        result = []
         numberOfZero = nums.count(0)
         if numberOfZero > 1:
             totalCount = 0
@@ -12,7 +13,6 @@ class Solution(object):
             for num in nums:
                 if num != 0:
                     totalCount *= num
-        result = []
         for num in nums:
             if numberOfZero > 0:
                 if num == 0:
