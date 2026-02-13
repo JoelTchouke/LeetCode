@@ -4,22 +4,23 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        n = len(nums)
-        res = [1] * n
-
-        # res[i] = product of nums[0..i-1]
-        prefix = 1
-        for i in range(n):
-            res[i] = prefix
-            prefix *= nums[i]
-
-        # multiply by product of nums[i+1..n-1]
-        suffix = 1
-        for i in range(n - 1, -1, -1):
-            res[i] *= suffix
-            suffix *= nums[i]
-
-        return res
-
+        totalCount = 1
+        numberOfZero = nums.count(0)
+        if numberOfZero > 1:
+            totalCount = 0
+        else:
+            for num in nums:
+                if num != 0:
+                    totalCount *= num
+        result = []
+        for num in nums:
+            if numberOfZero > 0:
+                if num == 0:
+                    result.append(totalCount)
+                else:
+                    result.append(0)
+            else:
+                result.append(totalCount / num)
+        return result
 
         
