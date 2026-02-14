@@ -23,7 +23,6 @@ class Solution(object):
                 subString.add(s[start])
             maxSubCount = max(len(subString), maxSubCount)
 
-
         return maxSubCount
 
 
