@@ -7,6 +7,7 @@ class Solution(object):
         """
         result = []
         intervals.append(newInterval)
+        newIntervals = sorted(intervals)
         currentInterval = newIntervals[0]
         for interval in newIntervals[1:]:
             if currentInterval[1] >= interval[0]:
