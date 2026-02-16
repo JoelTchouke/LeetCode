@@ -14,6 +14,5 @@ class Solution(object):
                     return False
                 top = stack.pop()
                 if matches[top] != p:
-                    return False
-            
-        return len(stack) == 0
+                    return False   
+        return not stack
