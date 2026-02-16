@@ -7,13 +7,13 @@ class Solution(object):
         stack = []
         matches = {'{':'}', '(':')', '[':']'}
         for p in s:
-            if len(stack) == 0 and p not in matches:
-                return False
             if p in matches :
                 stack.append(p)
-            if len(stack) != 0 and p not in matches:
+            else:
+                if not stack:
+                    return False
                 top = stack.pop()
-                if(matches[top] != p):
+                if matches[top] != p:
                     return False
             
         return len(stack) == 0
