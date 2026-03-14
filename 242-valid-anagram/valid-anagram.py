@@ -5,14 +5,16 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        result = True
         if len(s) != len(t):
             return False
-        tLetters = {}
-        sLetters = {}
-        for i in range(len(s)):
-            if s[i] not in t:
+        count = {}
+        for char in s:
+            count[char] = count.get(char, 0) + 1
+        for char in t:
+            if (char not in count) or count[char] == 0:
                 return False
-            sLetters[s[i]] = sLetters.get(s[i], 0) + 1
-            tLetters[t[i]] = tLetters.get(t[i], 0) + 1
-        return tLetters == sLetters
+            else:
+                count[char] -= 1
+        return result
         
