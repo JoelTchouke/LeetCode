@@ -10,12 +10,12 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        seen = set()
-        while(head != None):
-            if head not in seen:
-                seen.add(head)
-                head = head.next
-            else:
+        tortoise = head
+        rabbit = head
+        while(rabbit != None and rabbit.next != None):
+            tortoise = tortoise.next
+            rabbit = rabbit.next.next
+            if rabbit == tortoise:
                 return True
         return False
         
