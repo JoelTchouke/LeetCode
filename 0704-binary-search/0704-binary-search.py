@@ -1,3 +1,4 @@
+import math
 class Solution(object):
     def search(self, nums, target):
         """
@@ -8,7 +9,7 @@ class Solution(object):
         low = 0
         high = len(nums) - 1
         while(low <= high):
-            mid = (low + ((high - low) // 2))
+            mid = int(round(low + ((high - low) / 2)))
             if nums[mid] == target:
                 return mid
             if target > nums[mid]:
