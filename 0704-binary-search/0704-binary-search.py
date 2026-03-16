@@ -12,7 +12,7 @@ class Solution(object):
             mid = int(round(low + ((high - low) / 2)))
             if nums[mid] == target:
                 return mid
-            if target > nums[mid]:
+            elif target > nums[mid]:
                 low = mid + 1
             elif target < nums[mid]:
                 high = mid - 1
