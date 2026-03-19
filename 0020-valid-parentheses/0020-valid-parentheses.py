@@ -4,19 +4,18 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        if len(s) % 2 != 0:
-            return False
+        pMap = {'{':'}', '[':']', '(':')'}
         stack = []
-        mapMatch = {')':'(', ']':'[','}':'{'}
         for c in s:
-            if c not in mapMatch:
-                stack.append(c)
-            else:
+            if c not in pMap:
                 if not stack:
                     return False
                 top = stack.pop()
-                if top != mapMatch[c]:
+                if pMap[top] != c:
                     return False
-        return (not stack)
+            else:
+                stack.append(c)
+                
+        return  len(stack) == 0
 
                 
