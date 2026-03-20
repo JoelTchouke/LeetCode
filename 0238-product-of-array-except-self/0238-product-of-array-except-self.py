@@ -3,11 +3,9 @@ class Solution(object):
         zero_count = nums.count(0)
         multiplication = 1
         res = []
-
         for num in nums:
             if num != 0:
                 multiplication *= num
-
         for num in nums:
             if zero_count > 1:
                 res.append(0)
