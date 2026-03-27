@@ -3,21 +3,16 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         std::sort(intervals.begin(), intervals.end()); 
-        vector<vector<int>> res = {intervals[0]};
-        for(vector<int> interval : intervals)
+        vector<vector<int>> res;
+        res.push_back(intervals[0]);
+        for(int i = 1; i < intervals.size(); i++)
         {
-            vector<int> arr = res.back();
-            if(arr[1] >= interval[0] && arr[1] <= interval[1])
+            if (intervals[i][0] <= res.back()[1]) 
             {
-                res.back() = {arr[0], interval[1]};
-            }
-            else if(arr[0] <= interval[0] && arr[1] >= interval[1])
+                res.back()[1] = max(res.back()[1], intervals[i][1]);
+            } else 
             {
-                res.back() = arr;
-            }
-            else
-            {
-                res.push_back(interval);
+                res.push_back(intervals[i]);
             }
         }
         return res;
