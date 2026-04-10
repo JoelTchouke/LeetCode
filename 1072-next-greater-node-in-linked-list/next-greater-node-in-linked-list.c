@@ -9,7 +9,7 @@
  */
 
 int* nextLargerNodes(struct ListNode* head, int* returnSize) {
-    // First pass: count nodes
+    // Count nodes
     int n = 0;
     struct ListNode* curr = head;
     while (curr) {
@@ -18,35 +18,27 @@ int* nextLargerNodes(struct ListNode* head, int* returnSize) {
     }
 
     *returnSize = n;
-    if (n == 0) {
-        return NULL;
-    }
+    if (n == 0) return NULL;
 
-    // Store list values in an array
-    int* values = (int*)malloc(n * sizeof(int));
+    int* result = (int*)malloc(n * sizeof(int));
+
     curr = head;
     for (int i = 0; i < n; i++) {
-        values[i] = curr->val;
+        struct ListNode* dummy = curr->next;
+
+        // Look ahead for next greater node
+        while (dummy && dummy->val <= curr->val) {
+            dummy = dummy->next;
+        }
+
+        if (dummy) {
+            result[i] = dummy->val;
+        } else {
+            result[i] = 0;
+        }
+
         curr = curr->next;
     }
-
-    // Result array initialized to 0
-    int* result = (int*)calloc(n, sizeof(int));
-
-    // Stack of indices
-    int* stack = (int*)malloc(n * sizeof(int));
-    int top = -1;
-
-    for (int i = 0; i < n; i++) {
-        while (top >= 0 && values[i] > values[stack[top]]) {
-            result[stack[top]] = values[i];
-            top--;
-        }
-        stack[++top] = i;
-    }
-
-    free(values);
-    free(stack);
 
     return result;
 }
