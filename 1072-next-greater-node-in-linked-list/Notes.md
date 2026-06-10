@@ -1,1 +1,1 @@
-<h2>next-greater-node-in-linked-list Notes</h2><hr>[ Time taken: 36m 57s ]
+<h2>next-greater-node-in-linked-list Notes</h2><hr>[ Time taken: 55m 44s ]
