@@ -14,7 +14,7 @@ public:
             }
             else {
                 if(stack.empty()) return false;
-                if (stack.top() == pairs[c]) stack.pop();
+                if (stack.top() == it -> second) stack.pop();
                 else return false;
             }
         }
