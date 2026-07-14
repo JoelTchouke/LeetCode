@@ -6,9 +6,9 @@ public:
         for (size_t index = 0; index < nums.size(); ++index) 
         {
             int lookingFor = target - nums[index];
-            if (numsHash.find(lookingFor) != numsHash.end())
-            {
-                result.push_back(numsHash[lookingFor]);
+            auto it = numsHash.find(lookingFor);
+            if (it != numsHash.end()) {
+                result.push_back(it -> second);
                 result.push_back(index);
                 break;
             }
