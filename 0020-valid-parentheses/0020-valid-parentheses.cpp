@@ -1,27 +1,23 @@
 class Solution {
 public:
     bool isValid(string s) {
-        if(s.size() == 0)
-        {
-            return false;
-        }
-        stack<int> st;
-        unordered_map <char, char> mapP = {{'{','}'}, {'[',']'}, {'(',')'}};
-        for(char c : s)
-        {
-            if(mapP.find(c) != mapP.end())
-            {
-                st.push(c);
+        std::stack<char> stack;
+        std::unordered_map<char, char> pairs = {
+            {')', '('}, 
+            {']', '['}, 
+            {'}', '{'}
+        };        
+        for (char c : s) {
+            auto it = pairs.find(c);
+            if (it == pairs.end()) {
+                stack.push(c);
             }
-            else
-            {
-                if (st.empty()) return false;
-                char topSt = st.top();
-                st.pop();
-                if (c != mapP[topSt]) return false;
+            else {
+                if(stack.empty()) return false;
+                if (stack.top() == pairs[c]) stack.pop();
+                else break;
             }
         }
-
-        return st.size() == 0;
+        return stack.empty();
     }
 };
