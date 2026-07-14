@@ -15,7 +15,7 @@ public:
             else {
                 if(stack.empty()) return false;
                 if (stack.top() == pairs[c]) stack.pop();
-                else break;
+                else return false;
             }
         }
         return stack.empty();
