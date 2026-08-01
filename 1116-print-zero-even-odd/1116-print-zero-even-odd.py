@@ -3,7 +3,6 @@ import threading
 class ZeroEvenOdd(object):
     def __init__(self, n):
         self.n = n
-        # FIXED: Added '_event' suffix to prevent overwriting the class methods
         self.even_event = threading.Event()
         self.odd_event = threading.Event()
         self.zero_event = threading.Event()
@@ -31,7 +30,6 @@ class ZeroEvenOdd(object):
         """
         internal_num = 2
         while internal_num <= self.n:
-            # FIXED: even() now waits on even_event
             self.even_event.wait()
             self.even_event.clear()
             printNumber(internal_num)
@@ -45,7 +43,6 @@ class ZeroEvenOdd(object):
         """
         internal_num = 1
         while internal_num <= self.n:
-            # FIXED: Updated property names to match __init__
             self.odd_event.wait()
             self.odd_event.clear()
             printNumber(internal_num)
