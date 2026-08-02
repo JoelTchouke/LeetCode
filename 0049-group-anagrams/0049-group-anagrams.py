@@ -1,14 +1,14 @@
-from collections import defaultdict
-
 class Solution(object):
     def groupAnagrams(self, strs):
-        dic = {}
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        my_dict = {}
         res = []
-        for st in strs:
-            key = tuple(sorted(st))
-            if key not in dic:
-                dic[key] = []
-            dic[key].append(st)
-        for val in dic.values():
-            res.append(val)
+        for s in strs:
+            key = tuple(sorted(s))
+            my_dict[key] = my_dict.get(key, []) + [s]
+        for arr in my_dict.values():
+            res.append(arr)
         return res
