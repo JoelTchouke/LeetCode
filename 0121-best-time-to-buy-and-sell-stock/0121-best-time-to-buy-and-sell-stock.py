@@ -6,11 +6,10 @@ class Solution(object):
         """
         max_profit = 0
         buy_price = float('inf')
-        sell_price = 0
         for price in prices:
             buy_price = min(buy_price, price)
-            sell_price = max(buy_price, price)
-            max_profit = max(max_profit, sell_price - buy_price)
+            current_profit = price - buy_price
+            max_profit = max(max_profit, current_profit)
         return max_profit
 
 
