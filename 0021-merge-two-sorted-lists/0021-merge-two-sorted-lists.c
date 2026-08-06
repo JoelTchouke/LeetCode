@@ -1,5 +1,4 @@
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
-    // Handle empty list edge cases safely first
     if (!list1) return list2;
     if (!list2) return list1;
 
