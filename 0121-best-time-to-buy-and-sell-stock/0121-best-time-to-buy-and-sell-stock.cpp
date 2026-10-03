@@ -8,7 +8,6 @@ public:
             if (price < minSeen) 
             {
                 minSeen = price;
-                continue;
             }
             else
             {
