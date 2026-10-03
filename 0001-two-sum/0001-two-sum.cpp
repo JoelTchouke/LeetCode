@@ -1,18 +1,21 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        std::unordered_map<int, int> numsHash;
+        unordered_map<int, int> arr;
         vector<int> result;
-        for (size_t index = 0; index < nums.size(); ++index) 
+        for (int i = 0; i < nums.size(); i++)
         {
-            int lookingFor = target - nums[index];
-            auto it = numsHash.find(lookingFor);
-            if (it != numsHash.end()) {
-                result.push_back(it -> second);
-                result.push_back(index);
-                break;
+            int to_find = target - nums[i];
+            auto it = arr.find(to_find);
+            if(it != arr.end())
+            {
+                result.push_back(i);
+                result.push_back(arr[to_find]);
             }
-            numsHash[nums[index]] = index;
+            else
+            {
+                arr[nums[i]] = i;
+            }
         }
         return result;
     }
