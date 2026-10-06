@@ -5,14 +5,8 @@ public:
         int minSeen = INT_MAX;
         for (int price : prices)
         {
-            if (price < minSeen) 
-            {
-                minSeen = price;
-            }
-            else
-            {
-                maxProfit = std::max(maxProfit, (price - minSeen));
-            }
+            minSeen = std::min(price, minSeen);
+            maxProfit = std::max(maxProfit, (price - minSeen));
         }
         return maxProfit;
     }
