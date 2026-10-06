@@ -1,27 +1,25 @@
+#include <unordered_set>
 #include <algorithm>
+#include <string>
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_set<char> substring;
-        int left = 0;
-        int right= 0;
-        int maxSubstring = 0;
-        while(right != s.size())
-        {
-            if(substring.find(s[right]) == substring.end())
-            {
-                substring.insert(s[right]);
-                maxSubstring = max(maxSubstring, (right - left + 1));
-                right++;
-            }
-            else
-            {
-                substring.erase(s[left]);
-                left++;
-            }
+        int maxLength = 0;
+        int subStart = 0; 
+        std::unordered_set<char> ch;
 
+        for (int i = 0; i < s.size(); i++) 
+        {
+            while (ch.find(s[i]) != ch.end()) 
+            {
+                ch.erase(s[subStart]);
+                subStart++;
+            }
+            ch.insert(s[i]);
+            maxLength = std::max(maxLength, (i + 1) - subStart);
         }
 
-        return maxSubstring;
+        return maxLength;
     }
 };
