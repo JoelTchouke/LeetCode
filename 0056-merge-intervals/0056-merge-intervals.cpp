@@ -1,26 +1,22 @@
+#include <vector>
 #include <algorithm>
+
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        std::sort(intervals.begin(), intervals.end()); 
-        vector<vector<int>> res;
-        res.push_back(intervals[0]);
-        for(vector<int> interval : intervals)
+        std::sort(intervals.begin(), intervals.end());
+        std::vector<std::vector<int>> overlap;
+        for (std::vector<int> v : intervals)
         {
-            vector<int> arr = res.back();
-            if(arr[1] >= interval[0] && arr[1] <= interval[1])
+            if (overlap.empty()) 
             {
-                res.back() = {arr[0], interval[1]};
+                overlap.push_back(v);
+                continue;
             }
-            else if(arr[0] <= interval[0] && arr[1] >= interval[1])
-            {
-                res.back() = arr;
-            }
-            else
-            {
-                res.push_back(interval);
-            }
+            if (overlap.back()[1] >= v[0] && v[1] >= overlap.back()[1]) overlap.back()[1] = v[1];
+            else if (overlap.back()[1] >= v[0] && v[1] < overlap.back()[1]) continue;
+            else overlap.push_back(v);
         }
-        return res;
+        return overlap;
     }
 };
